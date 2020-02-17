@@ -1,0 +1,12 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    jcenter()
+}
+
+
+dependencies {
+    implementation 'com.github.backtrace-labs.backtrace-java:backtrace-java:1.0.0-rc.1'
+}

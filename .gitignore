@@ -1,2 +1,5 @@
 /.idea/
 /backtrace-sandbox.iml
+/build/
+/.gradle/
+/.gradle/
