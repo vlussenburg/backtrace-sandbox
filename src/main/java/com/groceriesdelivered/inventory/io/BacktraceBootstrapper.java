@@ -8,27 +8,9 @@ import org.slf4j.LoggerFactory;
 public class BacktraceBootstrapper {
     private static final transient Logger LOGGER = LoggerFactory.getLogger(BacktraceBootstrapper.class);
 
-    private static final Thread HOOK = new Thread() {
-
-        public Thread getThreadByName(String threadName) {
-            for (Thread t : Thread.getAllStackTraces().keySet()) {
-                LOGGER.debug(t.getName());
-                if (t.getName().equals(threadName)) {
-                    return t;
-                }
-            }
-            return null;
-        }
-
-        @Override
-        public void run() {
-            getThreadByName("backtrace-deamon").interrupt();
-        }
-    };
-
     public static BacktraceClient getClient() {
-        String token = "2fd0f15d6a112d5b255136b7cd6407284823425318354ba4cf3e9e9d6625b36f";
-        String universe = "bt-demos";
+        String token = "283a66bc10939a663e35c55c37deaad1571c6f8aa64145a4dc79b834f711e7f9";
+        String universe = "cd03";
         String submissionUrl = "https://submit.backtrace.io/" + universe + "/" + token + "/json";
         BacktraceConfig config = new BacktraceConfig(submissionUrl);
         BacktraceClient client = new BacktraceClient(config);
@@ -36,8 +18,6 @@ public class BacktraceBootstrapper {
         client.enableUncaughtExceptionsHandler();
         client.setApplicationName("InventorySynchronizationService");
         client.setApplicationVersion("3.43.4");
-
-        //Runtime.getRuntime().addShutdownHook(HOOK);
 
         return  client;
     }

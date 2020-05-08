@@ -2,12 +2,27 @@ plugins {
     id 'java'
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 repositories {
     jcenter()
 }
 
 
 dependencies {
-    implementation 'com.github.backtrace-labs.backtrace-java:backtrace-java:1.0.0-rc.1'
+    implementation 'com.github.backtrace-labs.backtrace-java:backtrace-java:0.9.1'
     implementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.29'
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}
+
+test {
+    useJUnit()
+
+    maxHeapSize = '1G'
 }

@@ -30,7 +30,7 @@ public class UserProfileService {
             throw new RuntimeException("Unable to deserialize address: " + address + ".");
         } catch (Exception e) {
             BacktraceReport report = new BacktraceReport(e,
-                    new HashMap<>() {{
+                    new HashMap<String, Object>() {{
                         put("address", address);
                         put("street", "7 W 73RD ST");
                         put("city", "NEW YORK");
@@ -38,7 +38,7 @@ public class UserProfileService {
                     }});
             client.send(report);
             try {
-                report.await();
+                client.await();
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
